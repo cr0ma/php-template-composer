@@ -1,0 +1,14 @@
+services: 
+    web:
+        image: nginx:latest
+        ports:
+            - 80:80
+        volumes:
+            - ../app/:/var/www/app
+            - ./site.conf:/etc/nginx/conf.d/site.conf
+        depends_on:
+            - php
+    php:
+        image: php:8-fpm
+        volumes:
+            - ../php/:/var/www/app
